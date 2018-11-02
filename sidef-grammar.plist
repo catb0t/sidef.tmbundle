@@ -1,0 +1,26 @@
+// ref:    https://macromates.com/manual/en/language_grammars
+//         Sidef::Parser.pm
+// syntax: https://macromates.com/manual/en/appendix#property-list-format
+
+// probably need the Mac-only TextMate application to generate a real bundle from this file
+{
+    scopeName = 'source.sidef';
+    fileTypes = ( "sm", "sf" );
+    firstLineMatch = "^#!/.*\bsidef\b";
+    foldingStartMarker = '\{\s*$';
+    foldingStopMarker = '^\s*\}';
+    patterns = (
+       {  name = 'keyword.control.untitled';
+          match = '\b(if|while|for|return)\b';
+       },
+       {  name = 'string.quoted.double.untitled';
+         begin = '"';
+         end = '"';
+         patterns = (
+            {  name = 'constant.character.escape.untitled';
+               match = '\\.';
+            }
+         );
+      },
+   );
+}
